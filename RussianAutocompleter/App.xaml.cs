@@ -13,5 +13,8 @@ namespace RussianAutocompleter
     /// </summary>
     public partial class App : Application
     {
+        static readonly string DataBaseName = "WordsData.db";
+        static readonly string FolderPath = "C:/Users/chase ueltschey/source/repos/RussianAutocompleter/RussianAutocompleter/";
+        public static string dbpath = System.IO.Path.Combine(FolderPath, DataBaseName);
     }
 }

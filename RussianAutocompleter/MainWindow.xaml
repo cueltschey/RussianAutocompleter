@@ -1,9 +1,10 @@
-﻿<Window x:Class="RussianAutocompleter.MainWindow"
+﻿
+<Window x:Class="RussianAutocompleter.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:RussianAutocompleter"
+        xmlns:local="clr-namespace:RussianAutocompleter" 
         mc:Ignorable="d"
         Title="Autocomplete" Height="300" Width="800"
         Background="#343434">
@@ -19,18 +20,41 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Border
-            CornerRadius="100"
             Grid.Column="1"
             Grid.Row="1"
             Height="auto"
             Width="auto">
-            <TextBox AutomationProperties.HelpText="Enter Text" TextChanged="TextBox_TextChanged" FontSize="20"
+            <TextBox AutomationProperties.HelpText="Enter Text" 
+                     TextChanged="TextBox_TextChanged" 
+                     FontSize="20"
+                     Name="autoTextBox"
                 
                 >
                 <TextBox.Effect>
                     <DropShadowEffect/>
                 </TextBox.Effect>
-            </TextBox>
-        </Border>
+            </TextBox></Border>
+        <Popup x:Name="autoListPopup"                    
+                   Height="100"    
+                   Placement="Bottom" 
+                   PopupAnimation="Slide" 
+                   StaysOpen="False"
+                   Visibility="Collapsed"
+                   Grid.Column="1"
+                   Grid.Row="1"
+               >
+            <ListView Name="autoList"
+                      Height="100"
+                      Width="100">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding WordRus}" Name="AutofillOption" MouseDown="AutofillOption_MouseDown"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Popup>
+        
     </Grid>
+    
 </Window>
+    
