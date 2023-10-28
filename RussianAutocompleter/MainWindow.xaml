@@ -6,54 +6,49 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RussianAutocompleter" 
         mc:Ignorable="d"
-        Title="Autocomplete" Height="300" Width="800"
+        Title="Autocomplete" Height="270" Width="630"
         Background="#343434">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="100"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="40"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <Border
+        <StackPanel Orientation="Vertical"    
+                    VerticalAlignment="Center"    
+                    HorizontalAlignment="Center">
+            <Border
             Grid.Column="1"
             Grid.Row="1"
             Height="auto"
             Width="auto">
-            <TextBox AutomationProperties.HelpText="Enter Text" 
+                <TextBox AutomationProperties.HelpText="Enter Text" 
                      TextChanged="TextBox_TextChanged" 
                      FontSize="20"
                      Name="autoTextBox"
-                
-                >
-                <TextBox.Effect>
-                    <DropShadowEffect/>
-                </TextBox.Effect>
-            </TextBox></Border>
+                     Width="600" KeyDown="autoTextBox_KeyDown">
+                    <TextBox.Effect>
+                        <DropShadowEffect/>
+                    </TextBox.Effect>
+                </TextBox>
+            </Border>
         <Popup x:Name="autoListPopup"                    
-                   Height="100"    
+                   Height="auto"    
                    Placement="Bottom" 
                    PopupAnimation="Slide" 
                    StaysOpen="False"
                    Visibility="Collapsed"
-                   Grid.Column="1"
-                   Grid.Row="1"
+                   Width="300" 
+               ScrollViewer.HorizontalScrollBarVisibility="Hidden" 
+               ScrollViewer.VerticalScrollBarVisibility="Hidden"
                >
             <ListView Name="autoList"
-                      Height="100"
-                      Width="100">
-                <ListView.ItemTemplate>
+                      Background="#363650" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                      Width="300"
+                      >
+                    <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock Text="{Binding WordRus}" Name="AutofillOption" MouseDown="AutofillOption_MouseDown"/>
-                    </DataTemplate>
+                            <TextBlock Text="{Binding WordRus}" Name="AutofillOption" MouseDown="AutofillOption_MouseDown"/>
+                        </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
         </Popup>
-        
+        </StackPanel>
     </Grid>
     
 </Window>

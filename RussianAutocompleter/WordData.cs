@@ -13,6 +13,6 @@ namespace RussianAutocompleter
         [PrimaryKey,AutoIncrement]
         public int Id { get; set; }
         public string WordRus { get; set; }
-        public string WordEng { get; set; }
+        public string Color { get; set; }
     }
 }
