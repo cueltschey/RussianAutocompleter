@@ -1,4 +1,4 @@
-# RussianAutocompleter
+# WPF Russian Autocomplete bar
 
 ### Purpose
 I wanted to make an application that would implement a unique data structure. This lead me to an autocomplete bar
